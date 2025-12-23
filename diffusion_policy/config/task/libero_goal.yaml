@@ -1,0 +1,37 @@
+name: libero_goal
+
+shape_meta: &shape_meta
+  # acceptable types: rgb, low_dim
+  obs:
+    image:
+      shape: [3, 128, 128]
+      type: rgb
+    wrist_image:
+      shape: [3, 128, 128]
+      type: rgb
+    agent_pos:
+      shape: [8]
+      # type default: low_dim
+    language_embedding:
+      shape: [768]
+      # DistilBERT embedding dimension
+  action:
+    shape: [7]
+
+task_name: &task_name libero_goal
+task_suite: &task_suite libero_goal
+max_episodes: &max_episodes null  # Set to limit episodes for testing
+
+dataset:
+  _target_: diffusion_policy.dataset.libero_dataset.LiberoDataset
+  shape_meta: *shape_meta
+  horizon: ${horizon}
+  pad_before: ${eval:'${n_obs_steps}-1+${n_latency_steps}'}
+  pad_after: ${eval:'${n_action_steps}-1'}
+  n_obs_steps: ${dataset_obs_steps}
+  seed: 42
+  val_ratio: 0.02
+  max_train_episodes: null
+  use_cache: False
+  max_episodes: *max_episodes
+  task_suite: *task_suite

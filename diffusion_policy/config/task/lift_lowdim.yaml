@@ -7,7 +7,7 @@ keypoint_dim: 3
 obs_keys: &obs_keys ['object', 'robot0_eef_pos', 'robot0_eef_quat', 'robot0_gripper_qpos']
 task_name: &task_name lift
 dataset_type: &dataset_type ph
-dataset_path: &dataset_path data/robomimic/datasets/${task.task_name}/${task.dataset_type}/low_dim.hdf5
+dataset_path: &dataset_path data/robomimic_lowdim/robomimic/datasets/${task.task_name}/${task.dataset_type}/low_dim.hdf5
 abs_action: &abs_action False
 
 env_runner:

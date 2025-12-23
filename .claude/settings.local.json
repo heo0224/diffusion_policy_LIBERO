@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(source:*)",
+      "Bash(conda activate:*)",
+      "Bash(pip install:*)",
+      "Bash(python:*)",
+      "Bash(timeout 600 python:*)",
+      "Bash(chmod:*)",
+      "Bash(for suite in spatial object goal 10 90)",
+      "Bash(do)",
+      "Bash(diffusion_policy/config/train_diffusion_unet_libero_$suite.yaml)",
+      "Bash(done)"
+    ]
+  }
+}
